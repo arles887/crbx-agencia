@@ -10,33 +10,102 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BeneficiosRouteImport } from './routes/beneficios'
+import { Route as MonetizacionRouteImport } from './routes/monetizacion'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as PreguntasRouteImport } from './routes/preguntas'
+import { Route as ProcesoRouteImport } from './routes/proceso'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BeneficiosRoute = BeneficiosRouteImport.update({
+  id: '/beneficios',
+  path: '/beneficios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MonetizacionRoute = MonetizacionRouteImport.update({
+  id: '/monetizacion',
+  path: '/monetizacion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreguntasRoute = PreguntasRouteImport.update({
+  id: '/preguntas',
+  path: '/preguntas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcesoRoute = ProcesoRouteImport.update({
+  id: '/proceso',
+  path: '/proceso',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/beneficios': typeof BeneficiosRoute
+  '/monetizacion': typeof MonetizacionRoute
+  '/nosotros': typeof NosotrosRoute
+  '/preguntas': typeof PreguntasRoute
+  '/proceso': typeof ProcesoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/beneficios': typeof BeneficiosRoute
+  '/monetizacion': typeof MonetizacionRoute
+  '/nosotros': typeof NosotrosRoute
+  '/preguntas': typeof PreguntasRoute
+  '/proceso': typeof ProcesoRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/beneficios': typeof BeneficiosRoute
+  '/monetizacion': typeof MonetizacionRoute
+  '/nosotros': typeof NosotrosRoute
+  '/preguntas': typeof PreguntasRoute
+  '/proceso': typeof ProcesoRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/beneficios'
+    | '/monetizacion'
+    | '/nosotros'
+    | '/preguntas'
+    | '/proceso'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/beneficios'
+    | '/monetizacion'
+    | '/nosotros'
+    | '/preguntas'
+    | '/proceso'
+  id:
+    | '__root__'
+    | '/'
+    | '/beneficios'
+    | '/monetizacion'
+    | '/nosotros'
+    | '/preguntas'
+    | '/proceso'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BeneficiosRoute: typeof BeneficiosRoute
+  MonetizacionRoute: typeof MonetizacionRoute
+  NosotrosRoute: typeof NosotrosRoute
+  PreguntasRoute: typeof PreguntasRoute
+  ProcesoRoute: typeof ProcesoRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +117,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/beneficios': {
+      id: '/beneficios'
+      path: '/beneficios'
+      fullPath: '/beneficios'
+      preLoaderRoute: typeof BeneficiosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/monetizacion': {
+      id: '/monetizacion'
+      path: '/monetizacion'
+      fullPath: '/monetizacion'
+      preLoaderRoute: typeof MonetizacionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/preguntas': {
+      id: '/preguntas'
+      path: '/preguntas'
+      fullPath: '/preguntas'
+      preLoaderRoute: typeof PreguntasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proceso': {
+      id: '/proceso'
+      path: '/proceso'
+      fullPath: '/proceso'
+      preLoaderRoute: typeof ProcesoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BeneficiosRoute: BeneficiosRoute,
+  MonetizacionRoute: MonetizacionRoute,
+  NosotrosRoute: NosotrosRoute,
+  PreguntasRoute: PreguntasRoute,
+  ProcesoRoute: ProcesoRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

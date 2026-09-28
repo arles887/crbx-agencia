@@ -1,3 +1,5 @@
+import { Gift, Users, Swords, GraduationCap } from "lucide-react";
+
 export const WHATSAPP_URL =
   "https://wa.me/51916753556?text=Hola%20CRBX%2C%20quiero%20unirme%20a%20la%20agencia%20de%20TikTok%20LIVE";
 export const PHONE_DISPLAY = "+51 916 753 556";

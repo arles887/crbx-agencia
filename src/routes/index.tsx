@@ -1,26 +1,53 @@
-import { createFileRoute } from "@tanstack/react-router";
-import {
-  MessageCircle,
-  Phone,
-  Mail,
-  Check,
-  Radio,
-  Users,
-  TrendingUp,
-  Gift,
-  GraduationCap,
-  Swords,
-  MapPin,
-} from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { MessageCircle, Phone, ArrowRight } from "lucide-react";
 import logoAsset from "@/assets/crbx-logo.png.asset.json";
 import heroBg from "@/assets/hero-bg.jpg";
 import creatorLive from "@/assets/creator-live.jpg";
 import liveGifts from "@/assets/live-gifts.jpg";
+import { WHATSAPP_URL, PHONE_DISPLAY, stats } from "@/lib/site";
+import { CtaBand } from "@/components/cta-band";
 
-const WHATSAPP_URL =
-  "https://wa.me/51916753556?text=Hola%20CRBX%2C%20quiero%20unirme%20a%20la%20agencia%20de%20TikTok%20LIVE";
-const PHONE_DISPLAY = "+51 916 753 556";
-const EMAIL = "seguraxdata@gmail.com";
+const destacados = [
+  { to: "/nosotros", titulo: "Nosotros", texto: "Agencia peruana de Carbe Global Corp SAC para creadores de LATAM.", img: creatorLive },
+  { to: "/monetizacion", titulo: "Monetización", texto: "Regalos, diamantes e incentivos que se convierten en ingresos.", img: liveGifts },
+] as const;
+
+const accesos = [
+  { to: "/beneficios", titulo: "Beneficios", texto: "Acompañamiento, batallas PK y capacitación." },
+  { to: "/proceso", titulo: "Proceso y requisitos", texto: "Cuatro pasos para empezar a transmitir." },
+  { to: "/preguntas", titulo: "Preguntas frecuentes", texto: "Costos, pagos, permanencia y más." },
+  { to: "/postular", titulo: "Postular", texto: "Envía tu perfil y te respondemos en 48 h." },
+] as const;
+
+function HomeLinks() {
+  return (
+    <section className="mx-auto max-w-6xl px-6 py-20">
+      <div className="grid gap-6 md:grid-cols-2">
+        {destacados.map((d) => (
+          <Link key={d.to} to={d.to} className="group overflow-hidden rounded-3xl border border-border bg-card transition-shadow hover:shadow-xl hover:shadow-black/5">
+            <img src={d.img} alt={d.titulo} loading="lazy" width={1024} height={1024} className="aspect-[16/10] w-full object-cover" />
+            <div className="p-7">
+              <h2 className="text-2xl font-bold tracking-tight">{d.titulo}</h2>
+              <p className="mt-2 text-sm text-muted-foreground">{d.texto}</p>
+              <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-live-pink">
+                Ver más <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
+          </Link>
+        ))}
+      </div>
+      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {accesos.map((a) => (
+          <Link key={a.to} to={a.to} className="group rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-lg hover:shadow-black/5">
+            <h3 className="font-semibold">{a.titulo}</h3>
+            <p className="mt-2 text-sm text-muted-foreground">{a.texto}</p>
+            <ArrowRight className="mt-4 size-4 text-live-cyan transition-transform group-hover:translate-x-1" />
+          </Link>
+        ))}
+      </div>
+    </section>
+  );
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
