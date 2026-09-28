@@ -4,8 +4,8 @@ const esc = (s: string) =>
   s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]!);
 
 export async function sendMail(opts: { subject: string; replyTo: string; fields: Record<string, string> }) {
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASS;
+  const user = process.env["SMTP_USER"];
+  const pass = process.env["SMTP_PASS"];
   if (!user || !pass) throw new Error("SMTP no configurado");
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
