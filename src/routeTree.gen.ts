@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BeneficiosRouteImport } from './routes/beneficios'
+import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as MonetizacionRouteImport } from './routes/monetizacion'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as PostularRouteImport } from './routes/postular'
 import { Route as PreguntasRouteImport } from './routes/preguntas'
 import { Route as ProcesoRouteImport } from './routes/proceso'
 
@@ -26,6 +28,11 @@ const BeneficiosRoute = BeneficiosRouteImport.update({
   path: '/beneficios',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MonetizacionRoute = MonetizacionRouteImport.update({
   id: '/monetizacion',
   path: '/monetizacion',
@@ -34,6 +41,11 @@ const MonetizacionRoute = MonetizacionRouteImport.update({
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PostularRoute = PostularRouteImport.update({
+  id: '/postular',
+  path: '/postular',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PreguntasRoute = PreguntasRouteImport.update({
@@ -50,16 +62,20 @@ const ProcesoRoute = ProcesoRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/beneficios': typeof BeneficiosRoute
+  '/contacto': typeof ContactoRoute
   '/monetizacion': typeof MonetizacionRoute
   '/nosotros': typeof NosotrosRoute
+  '/postular': typeof PostularRoute
   '/preguntas': typeof PreguntasRoute
   '/proceso': typeof ProcesoRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/beneficios': typeof BeneficiosRoute
+  '/contacto': typeof ContactoRoute
   '/monetizacion': typeof MonetizacionRoute
   '/nosotros': typeof NosotrosRoute
+  '/postular': typeof PostularRoute
   '/preguntas': typeof PreguntasRoute
   '/proceso': typeof ProcesoRoute
 }
@@ -67,8 +83,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/beneficios': typeof BeneficiosRoute
+  '/contacto': typeof ContactoRoute
   '/monetizacion': typeof MonetizacionRoute
   '/nosotros': typeof NosotrosRoute
+  '/postular': typeof PostularRoute
   '/preguntas': typeof PreguntasRoute
   '/proceso': typeof ProcesoRoute
 }
@@ -77,24 +95,30 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/beneficios'
+    | '/contacto'
     | '/monetizacion'
     | '/nosotros'
+    | '/postular'
     | '/preguntas'
     | '/proceso'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/beneficios'
+    | '/contacto'
     | '/monetizacion'
     | '/nosotros'
+    | '/postular'
     | '/preguntas'
     | '/proceso'
   id:
     | '__root__'
     | '/'
     | '/beneficios'
+    | '/contacto'
     | '/monetizacion'
     | '/nosotros'
+    | '/postular'
     | '/preguntas'
     | '/proceso'
   fileRoutesById: FileRoutesById
@@ -102,8 +126,10 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeneficiosRoute: typeof BeneficiosRoute
+  ContactoRoute: typeof ContactoRoute
   MonetizacionRoute: typeof MonetizacionRoute
   NosotrosRoute: typeof NosotrosRoute
+  PostularRoute: typeof PostularRoute
   PreguntasRoute: typeof PreguntasRoute
   ProcesoRoute: typeof ProcesoRoute
 }
@@ -124,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BeneficiosRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/monetizacion': {
       id: '/monetizacion'
       path: '/monetizacion'
@@ -136,6 +169,13 @@ declare module '@tanstack/react-router' {
       path: '/nosotros'
       fullPath: '/nosotros'
       preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/postular': {
+      id: '/postular'
+      path: '/postular'
+      fullPath: '/postular'
+      preLoaderRoute: typeof PostularRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/preguntas': {
@@ -158,8 +198,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeneficiosRoute: BeneficiosRoute,
+  ContactoRoute: ContactoRoute,
   MonetizacionRoute: MonetizacionRoute,
   NosotrosRoute: NosotrosRoute,
+  PostularRoute: PostularRoute,
   PreguntasRoute: PreguntasRoute,
   ProcesoRoute: ProcesoRoute,
 }
